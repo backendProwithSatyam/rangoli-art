@@ -1,0 +1,104 @@
+/* Phone-first: the reel fills the screen, nothing else is on the page. */
+
+html, body {
+  margin: 0;
+  height: 100%;
+  /* Matches the reel's top and bottom edges, so tall phones show no visible bands. */
+  background: linear-gradient(#17130f, #0b0908);
+  overflow: hidden;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+  color: #f4ece4;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* The whole 9:16 reel is always visible; any spare space is the same dark as its edges. */
+#reel {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.loading {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  font: 500 12px/1.6 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #a3a3b4;
+  background: #0a0807;
+  transition: opacity 0.4s;
+}
+.ready .loading { opacity: 0; pointer-events: none; }
+
+.start {
+  position: fixed;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: 100%;
+  border: 0;
+  padding: 24px;
+  background: rgba(10, 8, 7, 0.55);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.ready .start { display: flex; }
+.playing .start { display: none; }
+
+.start .title {
+  font-family: 'Tiro Devanagari Hindi', 'Noto Serif Devanagari', serif;
+  font-size: clamp(34px, 11vw, 56px);
+  line-height: 1.2;
+  background: linear-gradient(90deg, #ffe9b0, #f5bf55 50%, #ff9a4a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.start .tap {
+  padding: 14px 30px;
+  border-radius: 999px;
+  background: #f4f4f6;
+  color: #0b0b10;
+  font-weight: 600;
+  font-size: 16px;
+  animation: breathe 1.8s ease-in-out infinite;
+}
+
+.start .hint {
+  font: 500 11px/1.6 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a3a3b4;
+}
+
+.start:focus-visible .tap { outline: 2px solid #ff7a1a; outline-offset: 4px; }
+
+@keyframes breathe {
+  50% { transform: scale(1.05); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .start .tap { animation: none; }
+}

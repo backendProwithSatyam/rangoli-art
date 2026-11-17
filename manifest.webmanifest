@@ -1,0 +1,14 @@
+{
+  "name": "Radha Rani Rangoli",
+  "short_name": "Radha Rani",
+  "description": "A Radha Rani rangoli drawn by ten cursor agents. Tap and screen-record the reel.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#0a0807",
+  "theme_color": "#0a0807",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
